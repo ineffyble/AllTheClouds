@@ -27,9 +27,10 @@ POLICY
 }
 
 resource "aws_s3_bucket_object" "index_page" {
-  bucket  = aws_s3_bucket.bucket.id
-  key     = "index.html"
-  content = templatefile("../frontend/index.html", { cloud_provider = "Amazon Web Services" })
+  bucket       = aws_s3_bucket.bucket.id
+  key          = "index.html"
+  content      = templatefile("../frontend/index.html", { cloud_provider = "Amazon Web Services" })
+  content_type = "text/html"
 }
 
 resource "aws_acm_certificate" "certificate" {
