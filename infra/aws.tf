@@ -32,3 +32,14 @@ resource "aws_s3_bucket_object" "index_page" {
   content = templatefile("../frontend/index.html", { cloud_provider = "Amazon Web Services" })
 }
 
+resource "aws_acm_certificate" "certificate" {
+  domain_name = "alltheclouds.app"
+  subject_alternative_names = [
+    "www.alltheclouds.app"
+  ]
+  validation_method = "DNS"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
