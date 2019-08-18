@@ -34,12 +34,9 @@ resource "aws_s3_bucket_object" "index_page" {
 }
 
 resource "aws_acm_certificate" "certificate" {
-  domain_name = "alltheclouds.app"
-  subject_alternative_names = [
-    "www.alltheclouds.app"
-  ]
-  validation_method = "DNS"
-
+  private_key       = acme_certificate.certificate.private_key_pem
+  certificate_body  = acme_certificate.certificate.certificate_pem
+  certificate_chain = acme_certificate.certificate.issuer_pem
   lifecycle {
     create_before_destroy = true
   }
