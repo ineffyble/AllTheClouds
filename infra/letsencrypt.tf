@@ -15,7 +15,7 @@ resource "acme_registration" "registration" {
 resource "acme_certificate" "certificate" {
   account_key_pem           = acme_registration.registration.account_key_pem
   common_name               = "alltheclouds.app"
-  subject_alternative_names = ["www.alltheclouds.app"]
+  subject_alternative_names = ["*.alltheclouds.app"]
 
   dns_challenge {
     provider = "exec"

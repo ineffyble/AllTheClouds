@@ -8,5 +8,16 @@
   <body>
     <h1>Let's use all the clouds</h1>
     <h2>This webpage was served to you from ${cloud_provider}</h2>
+    <h2 id="backend"></h2>
+    <script>
+      fetch("https://api.alltheclouds.app/")
+        .then(
+          function(response) {
+            response.json().then(function(data) {
+              document.querySelector("#backend").innerText = "It hit an API served to you from " + data.cloud;
+            });
+          }
+        );
+    </script>
   </body>
 </html>
