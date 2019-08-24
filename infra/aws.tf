@@ -95,10 +95,10 @@ resource "aws_cloudfront_distribution" "distribution" {
 data "archive_file" "function_source" {
   type = "zip"
   source {
-    content = templatefile("../backend/index.js", { cloud_provider = "Amazon Web Services" })
+    content = templatefile("../backend/aws/index.js", { cloud_provider = "Amazon Web Services" })
     filename = "index.js"
   }
-  output_path = "${path.module}/function.zip"
+  output_path = "${path.module}/aws-function.zip"
 }
 
 resource "aws_lambda_function" "function" {

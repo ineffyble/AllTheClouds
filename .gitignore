@@ -9,4 +9,4 @@
 *.tfvars
 
 # Generated archives
-function.zip
+*.zip
